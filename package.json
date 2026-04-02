@@ -1,0 +1,21 @@
+{
+    "name": "gedeon-platform",
+    "private": true,
+    "version": "0.1.0",
+    "packageManager": "pnpm@10.0.0",
+    "scripts": {
+        "dev": "turbo run dev --parallel",
+        "build": "turbo run build",
+        "lint": "turbo run lint",
+        "test": "turbo run test",
+        "format": "turbo run format",
+        "dev:web": "pnpm --filter web dev",
+        "build:web": "pnpm --filter web build",
+        "lint:web": "pnpm --filter web lint",
+        "dev:bot": "pnpm --filter discord-bot dev",
+        "build:bot": "pnpm --filter discord-bot build"
+    },
+    "devDependencies": {
+        "turbo": "^2.1.3"
+    }
+}

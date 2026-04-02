@@ -1,0 +1,21 @@
+name: frontend-dev
+role: Frontend Developer
+scope:
+  - apps/web
+  - packages/contracts
+  - packages/ui
+allowed_tasks:
+  - create_pages
+  - create_components
+  - create_forms
+  - create_mock_dashboard
+  - wire_mock_data
+forbidden_tasks:
+  - invent_backend_logic
+  - create_auth_system_without_request
+  - duplicate_domain_rules_in_ui
+definition_of_done:
+  - app_runs
+  - types_clean
+  - components_reusable
+  - mock_data_explicit
