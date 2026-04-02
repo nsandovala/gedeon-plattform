@@ -1,4 +1,4 @@
-import React from "next";
+
 
 export default function Home() {
   return (
@@ -22,93 +22,191 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Monumental Asymmetric Hero */}
-      <section className="relative min-h-[100vh] w-full flex items-center bg-background border-b border-gedeon-border pt-20">
-        
-        {/* Dynamic Abstract Tactical Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden opacity-40">
+      {/* ═══════════════════════════════════════════════════════════
+           HERO V4 — Orbital Shield System / Spartan Quantum Minimalism
+         ═══════════════════════════════════════════════════════════ */}
+      <section className="relative min-h-[100vh] w-full flex items-center bg-background border-b border-gedeon-border pt-20 overflow-hidden">
+
+        {/* ── Layer 1: Geometric Mesh Background ── */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="tactical-mesh" width="80" height="80" patternUnits="userSpaceOnUse">
-                {/* Diagonal field lines */}
-                <path d="M0,80 L80,0" stroke="var(--color-text-muted)" strokeWidth="0.5" opacity="0.2"/>
-                {/* Horizontal & Vertical grid */}
-                <path d="M40,0 L40,80" stroke="var(--color-text-secondary)" strokeWidth="0.5" opacity="0.05"/>
-                <path d="M0,40 L80,40" stroke="var(--color-text-secondary)" strokeWidth="0.5" opacity="0.05"/>
-                {/* Nodes */}
-                <circle cx="40" cy="40" r="1" fill="var(--color-gedeon-red)"/>
-                <circle cx="0" cy="80" r="1.5" fill="var(--color-text-secondary)" opacity="0.5"/>
+              <pattern id="field-mesh" width="100" height="100" patternUnits="userSpaceOnUse">
+                {/* Primary diagonals */}
+                <path d="M0,100 L100,0" stroke="var(--color-text-secondary)" strokeWidth="0.4" style={{ animation: 'line-breathe 8s ease-in-out infinite' }} />
+                <path d="M0,0 L100,100" stroke="var(--color-text-secondary)" strokeWidth="0.4" opacity="0.1" />
+                {/* Cross grid */}
+                <path d="M50,0 V100" stroke="var(--color-text-muted)" strokeWidth="0.3" opacity="0.08" />
+                <path d="M0,50 H100" stroke="var(--color-text-muted)" strokeWidth="0.3" opacity="0.08" />
+                {/* Pulsing tactical nodes */}
+                <circle cx="50" cy="50" r="1.5" fill="var(--color-gedeon-red)" style={{ animation: 'node-pulse 4s ease-in-out infinite' }} />
+                <circle cx="0" cy="0" r="1" fill="var(--color-text-secondary)" opacity="0.3" />
+                <circle cx="100" cy="0" r="1" fill="var(--color-text-secondary)" opacity="0.3" />
+                <circle cx="0" cy="100" r="1" fill="var(--color-text-secondary)" opacity="0.25" />
+                <circle cx="100" cy="100" r="1" fill="var(--color-text-secondary)" opacity="0.25" />
+                {/* Red accent marks at intersections */}
+                <rect x="48" y="0" width="4" height="0.5" fill="var(--color-gedeon-red)" opacity="0.15" />
+                <rect x="0" y="48" width="0.5" height="4" fill="var(--color-gedeon-red)" opacity="0.15" />
               </pattern>
-              <radialGradient id="hero-glow" cx="70%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="var(--color-gedeon-red)" stopOpacity="0.15"/>
-                <stop offset="100%" stopColor="var(--color-background)" stopOpacity="0"/>
+              {/* Radial fade to contain the mesh */}
+              <radialGradient id="mesh-fade" cx="55%" cy="45%" r="65%">
+                <stop offset="0%" stopColor="var(--color-background)" stopOpacity="0" />
+                <stop offset="70%" stopColor="var(--color-background)" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="var(--color-background)" stopOpacity="1" />
               </radialGradient>
             </defs>
-            <rect width="100%" height="100%" fill="url(#hero-glow)"/>
-            <rect width="100%" height="100%" fill="url(#tactical-mesh)"/>
+            <rect width="100%" height="100%" fill="url(#field-mesh)" opacity="0.5" />
+            <rect width="100%" height="100%" fill="url(#mesh-fade)" />
           </svg>
         </div>
 
-        <div className="max-w-[1400px] w-full mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
-          
-          {/* Left Content Column - Monumental Typography */}
-          <div className="w-full md:w-[65%] 2xl:w-[60%] flex flex-col items-start pt-12 md:pt-0">
-            <div className="inline-flex items-center gap-4 mb-10 pl-1">
-              <span className="w-10 h-[2px] bg-gedeon-red inline-block" />
-              <span className="text-[11px] font-bold tracking-[0.4em] text-text-muted uppercase">Iniciando Protocolo 01</span>
+        {/* ── Layer 2: Red Energy Glow ── */}
+        <div
+          className="absolute pointer-events-none z-[1]"
+          style={{
+            width: '700px',
+            height: '700px',
+            right: '5%',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'radial-gradient(circle, var(--gedeon-red) 0%, transparent 70%)',
+            animation: 'glow-breathe 6s ease-in-out infinite',
+            filter: 'blur(80px)',
+          }}
+        />
+
+        {/* ── Content Grid ── */}
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 lg:px-16 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-16">
+
+          {/* Left: Editorial Text Block */}
+          <div className="w-full md:w-[58%] flex flex-col items-start">
+            {/* Microtexto operativo */}
+            <div className="flex items-center gap-3 mb-12">
+              <span className="w-8 h-[1px] bg-gedeon-red" />
+              <span className="text-[10px] font-bold tracking-[0.35em] text-text-muted uppercase" style={{ animation: 'flicker-red 8s ease-in-out infinite' }}>
+                Protocolo Gedeon // Preparando La Arena
+              </span>
             </div>
-            
-            <h1 className="text-[4.5rem] sm:text-8xl lg:text-[9rem] xl:text-[10rem] font-black uppercase tracking-tighter leading-[0.8] text-foreground mb-8 ml-[-4px]">
-              El <br/> Regreso <br/>
+
+            {/* Headline monumental */}
+            <h1 className="text-[3.8rem] sm:text-[5.5rem] lg:text-[8rem] xl:text-[9.5rem] font-black uppercase tracking-[-0.04em] leading-[0.82] text-foreground mb-10 ml-[-3px]">
+              El<br />
+              Regreso<br />
               <span className="text-gedeon-red">Táctico.</span>
             </h1>
-            
-            <p className="text-lg md:text-2xl text-text-secondary font-light max-w-xl leading-relaxed tracking-wide mb-16 pl-1 border-l border-gedeon-red/30">
-              Forjando leyendas. La comunidad que resistió vuelve convertida en un batallón implacable. Honor, disciplina y victoria.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 pl-1">
-              <button className="group relative px-10 py-5 bg-foreground text-background font-bold tracking-[0.2em] text-xs uppercase overflow-hidden">
+
+            {/* Subtítulo */}
+            <div className="relative pl-5 mb-16 max-w-lg">
+              <div className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-gedeon-red via-gedeon-red/40 to-transparent" />
+              <p className="text-lg md:text-xl text-text-secondary font-light leading-relaxed tracking-wide">
+                Forjando leyendas. La comunidad que resistió vuelve convertida en un batallón implacable. Honor, disciplina y victoria.
+              </p>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-5">
+              <button className="group relative px-10 py-5 bg-foreground text-background font-bold tracking-[0.2em] text-[11px] uppercase overflow-hidden cursor-pointer">
                 <span className="relative z-10 flex items-center gap-3">
                   Alinearse al Sistema
-                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </span>
                 <div className="absolute inset-0 bg-gedeon-red origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0" />
               </button>
-              <button className="px-10 py-5 bg-transparent border border-gedeon-border text-foreground font-bold tracking-[0.2em] text-xs uppercase hover:bg-white/5 transition-colors">
+              <button className="px-10 py-5 bg-transparent border border-gedeon-border text-foreground font-bold tracking-[0.2em] text-[11px] uppercase hover:border-text-secondary/40 hover:bg-white/[0.02] transition-all duration-300 cursor-pointer">
                 Nuestro Legado
               </button>
             </div>
           </div>
 
-          {/* Right Column - Visual Signature */}
-          <div className="hidden md:flex w-[35%] 2xl:w-[40%] justify-end relative">
-            <div className="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
-              {/* Outer rotating ring */}
-              <svg className="absolute inset-0 w-full h-full animate-[spin_60s_linear_infinite] opacity-30" viewBox="0 0 500 500">
-                <circle cx="250" cy="250" r="240" fill="none" stroke="var(--color-text-secondary)" strokeWidth="1" strokeDasharray="4 12" />
-                <circle cx="250" cy="250" r="230" fill="none" stroke="var(--color-gedeon-red)" strokeWidth="0.5" strokeDasharray="400 100" />
+          {/* Right: Shield + Orbital System */}
+          <div className="hidden md:flex w-[42%] justify-center items-center relative">
+            <div className="relative w-[420px] h-[420px] lg:w-[480px] lg:h-[480px] flex items-center justify-center">
+
+              {/* Orbital Ring 1 — Outermost (slow, dashed) */}
+              <svg
+                className="absolute inset-0 w-full h-full"
+                viewBox="0 0 500 500"
+                style={{ animation: 'orbit-slow 90s linear infinite' }}
+              >
+                <circle cx="250" cy="250" r="245" fill="none" stroke="var(--color-text-muted)" strokeWidth="0.5" strokeDasharray="3 18" opacity="0.25" />
+                {/* Orbital node markers */}
+                <circle cx="250" cy="5" r="2" fill="var(--color-gedeon-red)" style={{ animation: 'node-pulse 5s ease-in-out infinite' }} />
+                <circle cx="495" cy="250" r="1.5" fill="var(--color-text-secondary)" opacity="0.5" />
+                <circle cx="250" cy="495" r="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
               </svg>
-              {/* The Shield/Core Emblem */}
-              <svg width="200" height="200" viewBox="0 0 100 100" fill="none" className="text-gedeon-red relative z-10 drop-shadow-[0_0_30px_rgba(139,17,17,0.4)]">
-                <path d="M50 5 L10 20 V45 C10 70 30 90 50 95 C70 90 90 70 90 45 V20 L50 5 Z" stroke="currentColor" strokeWidth="3" strokeLinejoin="miter"/>
-                <path d="M50 5 V95" stroke="var(--color-text-secondary)" strokeWidth="1" strokeDasharray="2 4"/>
-                <path d="M10 20 L90 20" stroke="var(--color-text-secondary)" strokeWidth="1" opacity="0.5"/>
-                <path d="M20 30 L80 30" stroke="currentColor" strokeWidth="1" opacity="0.5"/>
-                <rect x="45" y="40" width="10" height="10" fill="currentColor" />
+
+              {/* Orbital Ring 2 — Mid (counter-rotating, partial arc) */}
+              <svg
+                className="absolute inset-[30px] w-[calc(100%-60px)] h-[calc(100%-60px)]"
+                viewBox="0 0 500 500"
+                style={{ animation: 'orbit-reverse 70s linear infinite' }}
+              >
+                <circle cx="250" cy="250" r="240" fill="none" stroke="var(--color-gedeon-red)" strokeWidth="0.8" strokeDasharray="300 200" opacity="0.4" />
+                <circle cx="250" cy="250" r="240" fill="none" stroke="var(--color-text-secondary)" strokeWidth="0.3" strokeDasharray="2 28" opacity="0.2" />
+                {/* Orbital node */}
+                <circle cx="10" cy="250" r="2.5" fill="var(--color-gedeon-red)" style={{ animation: 'flicker-red 6s ease-in-out infinite' }} />
               </svg>
+
+              {/* Orbital Ring 3 — Inner halo */}
+              <svg
+                className="absolute inset-[60px] w-[calc(100%-120px)] h-[calc(100%-120px)]"
+                viewBox="0 0 500 500"
+                style={{ animation: 'orbit-slow 50s linear infinite' }}
+              >
+                <circle cx="250" cy="250" r="230" fill="none" stroke="var(--color-text-secondary)" strokeWidth="0.4" strokeDasharray="8 40" opacity="0.15" />
+              </svg>
+
+              {/* ── The Shield: Core Emblem ── */}
+              <svg
+                className="relative z-10"
+                width="160" height="180"
+                viewBox="0 0 120 140"
+                fill="none"
+                style={{ filter: 'drop-shadow(0 0 40px rgba(139,17,17,0.35))' }}
+              >
+                {/* Shield outline */}
+                <path
+                  d="M60 6 L12 28 V62 C12 98 36 125 60 134 C84 125 108 98 108 62 V28 L60 6 Z"
+                  stroke="var(--color-gedeon-red)"
+                  strokeWidth="2"
+                  strokeLinejoin="miter"
+                  fill="none"
+                />
+                {/* Inner shield echo */}
+                <path
+                  d="M60 18 L24 36 V64 C24 92 42 114 60 122 C78 114 96 92 96 64 V36 L60 18 Z"
+                  stroke="var(--color-text-secondary)"
+                  strokeWidth="0.5"
+                  strokeLinejoin="miter"
+                  fill="none"
+                  opacity="0.2"
+                />
+                {/* Vertical axis — dashed */}
+                <line x1="60" y1="6" x2="60" y2="134" stroke="var(--color-text-secondary)" strokeWidth="0.8" strokeDasharray="3 5" opacity="0.3" />
+                {/* Horizontal crossbar */}
+                <line x1="12" y1="28" x2="108" y2="28" stroke="var(--color-text-secondary)" strokeWidth="0.5" opacity="0.15" />
+                <line x1="20" y1="42" x2="100" y2="42" stroke="var(--color-gedeon-red)" strokeWidth="0.5" opacity="0.25" />
+                {/* Core nucleus */}
+                <rect x="54" y="58" width="12" height="12" fill="var(--color-gedeon-red)" opacity="0.8" />
+                <rect x="56" y="60" width="8" height="8" fill="var(--color-background)" opacity="0.6" />
+                {/* Lower marks */}
+                <line x1="40" y1="80" x2="80" y2="80" stroke="var(--color-text-muted)" strokeWidth="0.5" opacity="0.15" />
+                <circle cx="60" cy="100" r="1.5" fill="var(--color-gedeon-red)" style={{ animation: 'node-pulse 3s ease-in-out infinite' }} />
+              </svg>
+
             </div>
           </div>
-          
+
         </div>
-        
+
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-6 md:left-12 flex flex-col items-center gap-4 opacity-50">
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold rotate-90 origin-left translate-y-8">Scroll</span>
-          <div className="w-[1px] h-16 bg-gradient-to-b from-gedeon-red to-transparent" />
+        <div className="absolute bottom-12 left-6 md:left-12 flex flex-col items-center gap-3 opacity-40">
+          <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-text-muted rotate-90 origin-left translate-y-8">Scroll</span>
+          <div className="w-[1px] h-20 bg-gradient-to-b from-gedeon-red to-transparent" />
         </div>
+
       </section>
 
       {/* Manifiesto Editorial - High Contrast Block */}
@@ -192,9 +290,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8 max-w-4xl leading-[0.9]">
           La arena se abre <span className="text-transparent border-text-stroke text-background font-outline">una vez más.</span>
         </h2>
-        <style dangerouslySetInnerHTML={{__html: `
-          .font-outline { -webkit-text-stroke: 1px var(--color-foreground); color: transparent; }
-        `}} />
+
         
         <p className="text-text-muted text-xl max-w-2xl font-light mb-16 tracking-wide">
           No buscamos jugadores, reclutamos tácticos. Únete hoy a la élite.
