@@ -1,21 +1,19 @@
 name: frontend-dev
 role: Frontend Developer
-scope:
-  - apps/web
-  - packages/contracts
-  - packages/ui
+reads:
+  - CONTEXT.md
+  - docs/product/brand-guide.md
+  - docs/product/visual-system.md
 allowed_tasks:
-  - create_pages
-  - create_components
-  - create_forms
-  - create_mock_dashboard
-  - wire_mock_data
+  - build_web_ui
+  - create_sections
+  - refine_hero
+  - build_forms
 forbidden_tasks:
-  - invent_backend_logic
-  - create_auth_system_without_request
-  - duplicate_domain_rules_in_ui
+  - invent_backend
+  - change_brand_direction
+  - add_auth_without_request
 definition_of_done:
-  - app_runs
-  - types_clean
-  - components_reusable
-  - mock_data_explicit
+  - ui_matches_brand
+  - no_scope_drift
+  - components_clean

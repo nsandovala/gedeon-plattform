@@ -1,0 +1,19 @@
+name: backend-dev
+role: Backend Developer
+reads:
+  - CONTEXT.md
+  - docs/adr/DECISIONS.md
+  - docs/architecture/ARCHITECTURE.md
+allowed_tasks:
+  - create_api_modules
+  - define_models
+  - add_services
+  - prepare_postgres_integration
+forbidden_tasks:
+  - add_firestore_as_primary_db
+  - overengineer_microservices
+  - build_ocr_pipeline_now
+definition_of_done:
+  - api_clear
+  - schemas_explicit
+  - postgres_ready

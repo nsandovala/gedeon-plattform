@@ -1,18 +1,16 @@
 name: discord-dev
 role: Discord Bot Developer
-scope:
-  - apps/discord-bot
-  - packages/contracts
+reads:
+  - CONTEXT.md
+  - docs/adr/DECISIONS.md
 allowed_tasks:
   - create_bot_shell
-  - create_slash_commands
-  - create_event_handlers
-  - connect_to_api
+  - define_commands
+  - wire_api_payloads
 forbidden_tasks:
-  - embed_critical_business_logic_in_bot
-  - bypass_api_contracts
+  - put_core_business_logic_in_bot
+  - invent_discord_only_state
 definition_of_done:
-  - bot_starts
-  - commands_register
-  - events_logged
-  - payloads_match_contracts
+  - bot_minimal
+  - commands_clear
+  - api_ready_integration
