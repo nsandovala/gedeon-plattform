@@ -1,5 +1,8 @@
 
 
+import InterestForm from "./components/InterestForm";
+
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-background text-foreground overflow-x-hidden font-sans selection:bg-gedeon-red/40">
@@ -17,6 +20,7 @@ export default function Home() {
           <div className="hidden md:flex gap-12 text-[10px] font-bold tracking-[0.2em] text-text-muted">
             <a href="#manifiesto" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">MANIFIESTO</a>
             <a href="#tactica" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">SISTEMA</a>
+            <a href="#interes" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">INTERÉS</a>
             <a href="#cta" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">DESPLIEGUE</a>
           </div>
         </div>
@@ -105,7 +109,7 @@ export default function Home() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-5">
-              <button className="group relative px-10 py-5 bg-foreground text-background font-bold tracking-[0.2em] text-[11px] uppercase overflow-hidden cursor-pointer">
+              <a href="#interes" className="group relative px-10 py-5 bg-foreground text-background font-bold tracking-[0.2em] text-[11px] uppercase overflow-hidden cursor-pointer inline-block no-underline">
                 <span className="relative z-10 flex items-center gap-3">
                   Alinearse al Sistema
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,7 +117,7 @@ export default function Home() {
                   </svg>
                 </span>
                 <div className="absolute inset-0 bg-gedeon-red origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0" />
-              </button>
+              </a>
               <button className="px-10 py-5 bg-transparent border border-gedeon-border text-foreground font-bold tracking-[0.2em] text-[11px] uppercase hover:border-text-secondary/40 hover:bg-white/[0.02] transition-all duration-300 cursor-pointer">
                 Nuestro Legado
               </button>
@@ -279,6 +283,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══════════════════════════════════════════════════════════
+           INTEREST FORM — Alineamiento Táctico
+         ═══════════════════════════════════════════════════════════ */}
+      <section id="interes" className="relative py-32 md:py-40 bg-background px-6 md:px-12 border-b border-gedeon-border overflow-hidden">
+        {/* Subtle dot grid background */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "radial-gradient(var(--foreground) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+
+        {/* Red glow accent */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            width: "500px",
+            height: "500px",
+            left: "-10%",
+            top: "20%",
+            background:
+              "radial-gradient(circle, var(--gedeon-red) 0%, transparent 70%)",
+            filter: "blur(100px)",
+            opacity: 0.08,
+          }}
+        />
+
+        <div className="max-w-[1400px] mx-auto w-full relative z-10">
+          {/* Section Header */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 md:gap-20 mb-20">
+            <div className="flex flex-col">
+              <span className="text-[12px] text-gedeon-red font-bold tracking-[0.3em] uppercase mb-6">
+                Bloque 03
+              </span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-foreground border-l-4 border-gedeon-red pl-6">
+                Alineamiento<br />Táctico.
+              </h2>
+            </div>
+
+            <div className="flex flex-col gap-6 lg:pl-10 2xl:pl-32 border-t border-gedeon-border md:border-t-0 md:border-l md:border-gedeon-border pt-10 md:pt-0 justify-center">
+              <p className="text-xl md:text-2xl text-text-secondary font-light leading-snug tracking-tight max-w-xl">
+                Registra tu interés y sé el primero en recibir acceso cuando el protocolo se active. Sin compromisos, sin spam.
+              </p>
+              <div className="flex items-center gap-3 mt-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-gedeon-red opacity-70">
+                  <path d="M12 2L3 6v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square"/>
+                </svg>
+                <span className="text-[10px] font-bold tracking-[0.25em] text-text-muted uppercase">
+                  Tus datos están protegidos por el escudo
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Form Container */}
+          <div className="relative p-8 md:p-12 lg:p-16 border border-gedeon-border bg-gedeon-surface/30 backdrop-blur-sm">
+            {/* Corner accents */}
+            <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gedeon-red" />
+            <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gedeon-red" />
+            <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gedeon-red" />
+            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gedeon-red" />
+
+            <InterestForm />
+          </div>
+        </div>
+      </section>
+
       {/* Ceremonial Closing / Final CTA */}
       <section id="cta" className="py-48 bg-background relative px-6 md:px-12 flex flex-col items-center text-center justify-center border-t-8 border-gedeon-red">
         <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--color-gedeon-red)_0%,transparent_40%)] opacity-5 pointer-events-none" />
@@ -296,7 +369,7 @@ export default function Home() {
           No buscamos jugadores, reclutamos tácticos. Únete hoy a la élite.
         </p>
         
-        <a href="#" className="inline-flex items-center justify-center px-16 py-6 bg-gedeon-red text-white font-bold tracking-[0.3em] uppercase transition-all duration-300 hover:bg-white hover:text-black hover:scale-105">
+        <a href="#interes" className="inline-flex items-center justify-center px-16 py-6 bg-gedeon-red text-white font-bold tracking-[0.3em] uppercase transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 no-underline">
           Ingresar al Batallón
         </a>
       </section>

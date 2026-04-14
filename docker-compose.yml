@@ -1,0 +1,26 @@
+# Gedeon Platform — Development Infrastructure
+#
+# docker compose up -d
+#
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: gedeon-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: gedeon
+      POSTGRES_PASSWORD: gedeon
+      POSTGRES_DB: gedeon
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gedeon -d gedeon"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  pgdata:

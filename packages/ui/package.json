@@ -1,0 +1,11 @@
+{
+  "name": "@gedeon/ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared UI components for Gedeon platform",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "echo \"no build yet\"",
+    "lint": "echo \"no lint yet\""
+  }
+}
