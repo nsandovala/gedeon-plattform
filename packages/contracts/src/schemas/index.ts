@@ -1,4 +1,4 @@
 export {
   leadInterestInputSchema,
   leadInterestSuccessSchema,
-} from "./lead-interest.js";
+} from "./lead-interest";

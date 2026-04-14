@@ -12,10 +12,14 @@ import {
   type LeadInterestInput,
 } from "@gedeon/contracts";
 
-type FormState = "idle" | "submitting" | "success";
+type FormState = "idle" | "submitting" | "success" | "error";
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 export default function InterestForm() {
   const [formState, setFormState] = useState<FormState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const {
     register,
@@ -36,14 +40,30 @@ export default function InterestForm() {
 
   const onSubmit = async (data: LeadInterestInput) => {
     setFormState("submitting");
+    setErrorMessage("");
 
-    // Mock submit — simula latencia de red
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const res = await fetch(`${API_URL}/api/interest`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    // Log para desarrollo (se reemplazará por POST /api/interest)
-    console.log("[Gedeon] Interest submission:", data);
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        const detail =
+          body?.detail ??
+          (res.status === 422
+            ? "Datos inválidos. Revisa los campos."
+            : "Error del servidor. Inténtalo de nuevo.");
+        throw new Error(detail);
+      }
 
-    setFormState("success");
+      setFormState("success");
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : "Error desconocido");
+      setFormState("error");
+    }
   };
 
   // ═══════════════════════════════════════
@@ -102,6 +122,59 @@ export default function InterestForm() {
           className="text-[10px] font-bold tracking-[0.25em] uppercase text-text-muted hover:text-foreground transition-colors border-b border-text-muted/30 hover:border-gedeon-red pb-1 cursor-pointer"
         >
           Enviar otro registro
+        </button>
+      </div>
+    );
+  }
+
+  // ═══════════════════════════════════════
+  // ERROR STATE
+  // ═══════════════════════════════════════
+  if (formState === "error") {
+    return (
+      <div className="relative flex flex-col items-center justify-center text-center py-24 px-8">
+        {/* Red warning icon */}
+        <div className="relative mb-10">
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="relative z-10 text-gedeon-red"
+          >
+            <path
+              d="M12 9v4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="square"
+            />
+            <circle cx="12" cy="16" r="1" fill="currentColor" />
+            <path
+              d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="square"
+            />
+          </svg>
+        </div>
+
+        <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-4 text-foreground">
+          Error de <span className="text-gedeon-red">Transmisión.</span>
+        </h3>
+        <p className="text-text-secondary text-base max-w-md leading-relaxed mb-4">
+          No pudimos registrar tu interés. Puede ser un problema temporal del
+          servidor.
+        </p>
+        {errorMessage && (
+          <p className="text-sm text-gedeon-red mb-8 font-mono bg-gedeon-red/10 px-4 py-2 border border-gedeon-red/30">
+            {errorMessage}
+          </p>
+        )}
+        <button
+          onClick={() => setFormState("idle")}
+          className="text-[10px] font-bold tracking-[0.25em] uppercase text-text-muted hover:text-foreground transition-colors border-b border-text-muted/30 hover:border-gedeon-red pb-1 cursor-pointer"
+        >
+          Reintentar
         </button>
       </div>
     );

@@ -1,1 +1,1 @@
-export type { LeadInterestInput, LeadInterestSuccess } from "./lead-interest.js";
+export type { LeadInterestInput, LeadInterestSuccess } from "./lead-interest";

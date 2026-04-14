@@ -14,20 +14,20 @@ export {
   PreferredMode,
   preferredModeSchema,
   PREFERRED_MODE_LABELS,
-} from "./enums/preferred-mode.js";
+} from "./enums/preferred-mode";
 
 export {
   AvailabilityOption,
   availabilityOptionSchema,
   AVAILABILITY_LABELS,
-} from "./enums/availability-option.js";
+} from "./enums/availability-option";
 
 // ── Schemas (Zod) ──
 export {
   leadInterestInputSchema,
   leadInterestSuccessSchema,
-} from "./schemas/lead-interest.js";
+} from "./schemas/lead-interest";
 
 // ── Types (inferred from Zod) ──
-export type { LeadInterestInput } from "./types/lead-interest.js";
-export type { LeadInterestSuccess } from "./types/lead-interest.js";
+export type { LeadInterestInput } from "./types/lead-interest";
+export type { LeadInterestSuccess } from "./types/lead-interest";

@@ -13,12 +13,20 @@ from pydantic import BaseModel, EmailStr, Field
 
 # ── Request ──
 class InterestInput(BaseModel):
-    """POST /api/interest — payload from the web form."""
+    """POST /api/interest — payload from the web form.
+
+    JSON keys match the Zod leadInterestInputSchema from @gedeon/contracts.
+    """
 
     name: str = Field(..., min_length=2, max_length=80)
     discord_handle: str = Field(..., min_length=2, max_length=40, alias="discord")
     email: EmailStr | None = None
-    preferred_mode: str = Field(..., min_length=1, max_length=30)
+    preferred_mode: str = Field(
+        ...,
+        min_length=1,
+        max_length=30,
+        alias="preferredMode",
+    )
     availability: str = Field(..., min_length=1, max_length=30)
     message: str | None = Field(None, max_length=500)
     source: str = Field(default="web", max_length=30)

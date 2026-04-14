@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { preferredModeSchema } from "../enums/preferred-mode.js";
-import { availabilityOptionSchema } from "../enums/availability-option.js";
+import { preferredModeSchema } from "../enums/preferred-mode";
+import { availabilityOptionSchema } from "../enums/availability-option";
 
 /**
  * Schema de entrada para el formulario de interés.
