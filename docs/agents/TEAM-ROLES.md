@@ -104,7 +104,7 @@ Construcción del bot como capa de comunidad y automatización ligera.
 
 ---
 
-## Qwen / Gemma / Modelos locales
+## Qwen / Gemma / gpt-oss / Claude-opus /  Modelos locales y en linea
 
 ### Rol
 Copilotos de implementación y aceleración.

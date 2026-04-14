@@ -18,11 +18,17 @@
 - [x] scripts/create_tables.py — DB table creation
 
 ### Next
-- [ ] Install Python deps + run create_tables.py
-- [ ] Smoke test: POST + GET /api/interest
+- [ ] Docker Desktop running en Mac (o PostgreSQL nativo)
+- [ ] python -m scripts.create_tables
+- [ ] Smoke test: POST + GET /api/interest con DB real
+- [ ] Fix db.py si ConnectionDoesNotExistError persiste
 - [ ] Form submission → DB → admin list works
 - [ ] Fill CONTEXT.md, DECISIONS.md, ROADMAP.md
 - [ ] CTA Discord link real
+
+### Blocked
+- [x] Docker en Windows — Desktop no estaba corriendo (handoff para Mac)
+- [ ] db.py — ConnectionDoesNotExistError al hacer flush/insert
 
 ## Phase 2 — Interest Capture (Not started)
 - [ ] Admin dashboard (read-only table)
