@@ -12,11 +12,6 @@ from app.config import settings
 engine = create_async_engine(
     settings.DATABASE_URL,
     echo=settings.DEBUG,
-    pool_pre_ping=True,
-    pool_recycle=300,
-    pool_size=5,           # ← NUEVO
-    max_overflow=10,       # ← NUEVO
-    pool_timeout=30,   
 )
 
 # ── Session factory ──
