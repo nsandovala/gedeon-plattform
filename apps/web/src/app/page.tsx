@@ -1,280 +1,441 @@
-
-
 import InterestForm from "./components/InterestForm";
+import GedeonMark from "./components/GedeonMark";
 
+const tacticalStats = [
+  { label: "Disciplina", value: "100%" },
+  { label: "Estado", value: "Activo" },
+  { label: "Vision", value: "Global" },
+  { label: "Honor", value: "Maximo" },
+];
+
+const tacticalValues = [
+  {
+    id: "01",
+    title: "Fuerza Contenida",
+    desc: "No derrochamos energia. Cada movimiento es intencional, cada ofensiva esta calculada. Atacamos con precision cuando la victoria es absoluta.",
+  },
+  {
+    id: "02",
+    title: "Mentalidad de Acero",
+    desc: "La derrota es simplemente data; la victoria es la consecuencia logica de nuestra preparacion. Inquebrantables bajo cualquier presion.",
+  },
+  {
+    id: "03",
+    title: "Unidad Total",
+    desc: "El individuo es letal, pero el batallon es invencible. Sincronizacion tactica donde cada agente protege al colectivo.",
+  },
+];
+
+const recruitmentSignals = [
+  {
+    code: "Canal prioritario",
+    detail: "Tu registro entra primero al radar cuando se active el despliegue.",
+  },
+  {
+    code: "Sin ruido",
+    detail: "Solo contacto util. Nada de spam, nada de mensajes fuera de contexto.",
+  },
+  {
+    code: "Lectura tactica",
+    detail: "Los campos nos ayudan a entender perfil, disponibilidad y afinidad competitiva.",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-background text-foreground overflow-x-hidden font-sans selection:bg-gedeon-red/40">
-      
-      {/* Navbar Premium Brutalist */}
-      <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-text-secondary/10">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-[80px] flex items-center justify-between">
+    <main className="flex min-h-screen flex-col overflow-x-hidden bg-background font-sans text-foreground selection:bg-gedeon-red/40">
+      <nav className="fixed top-0 z-50 w-full border-b border-text-secondary/10 bg-background/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-[80px] max-w-[1400px] items-center justify-between px-6 md:px-12">
           <div className="flex items-center gap-6">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-gedeon-red">
-              <path d="M12 2L3 6v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
-              <path d="M12 2v20" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" opacity="0.5"/>
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="text-gedeon-red"
+            >
+              <path
+                d="M12 2L3 6v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="square"
+              />
+              <path
+                d="M12 2v20"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeDasharray="2 2"
+                opacity="0.5"
+              />
             </svg>
-            <span className="font-bold text-sm tracking-[0.25em] uppercase text-foreground">Gedeon</span>
+            <span className="text-sm font-bold uppercase tracking-[0.25em] text-foreground">
+              Gedeon
+            </span>
           </div>
-          <div className="hidden md:flex gap-12 text-[10px] font-bold tracking-[0.2em] text-text-muted">
-            <a href="#manifiesto" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">MANIFIESTO</a>
-            <a href="#tactica" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">SISTEMA</a>
-            <a href="#interes" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">INTERÉS</a>
-            <a href="#cta" className="hover:text-foreground transition-colors py-2 border-b-2 border-transparent hover:border-gedeon-red">DESPLIEGUE</a>
+          <div className="hidden gap-12 text-[10px] font-bold tracking-[0.2em] text-text-muted md:flex">
+            <a
+              href="#manifiesto"
+              className="border-b-2 border-transparent py-2 transition-colors hover:border-gedeon-red hover:text-foreground"
+            >
+              MANIFIESTO
+            </a>
+            <a
+              href="#tactica"
+              className="border-b-2 border-transparent py-2 transition-colors hover:border-gedeon-red hover:text-foreground"
+            >
+              SISTEMA
+            </a>
+            <a
+              href="#interes"
+              className="border-b-2 border-transparent py-2 transition-colors hover:border-gedeon-red hover:text-foreground"
+            >
+              INTERES
+            </a>
+            <a
+              href="#cta"
+              className="border-b-2 border-transparent py-2 transition-colors hover:border-gedeon-red hover:text-foreground"
+            >
+              DESPLIEGUE
+            </a>
           </div>
         </div>
       </nav>
 
-      {/* ═══════════════════════════════════════════════════════════
-           HERO V4 — Orbital Shield System / Spartan Quantum Minimalism
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[100vh] w-full flex items-center bg-background border-b border-gedeon-border pt-20 overflow-hidden">
-
-        {/* ── Layer 1: Geometric Mesh Background ── */}
+      <section className="relative flex min-h-[100vh] w-full items-center overflow-hidden border-b border-gedeon-border bg-background pt-20">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <svg className="absolute h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="field-mesh" width="100" height="100" patternUnits="userSpaceOnUse">
-                {/* Primary diagonals */}
-                <path d="M0,100 L100,0" stroke="var(--color-text-secondary)" strokeWidth="0.4" style={{ animation: 'line-breathe 8s ease-in-out infinite' }} />
-                <path d="M0,0 L100,100" stroke="var(--color-text-secondary)" strokeWidth="0.4" opacity="0.1" />
-                {/* Cross grid */}
-                <path d="M50,0 V100" stroke="var(--color-text-muted)" strokeWidth="0.3" opacity="0.08" />
-                <path d="M0,50 H100" stroke="var(--color-text-muted)" strokeWidth="0.3" opacity="0.08" />
-                {/* Pulsing tactical nodes */}
-                <circle cx="50" cy="50" r="1.5" fill="var(--color-gedeon-red)" style={{ animation: 'node-pulse 4s ease-in-out infinite' }} />
-                <circle cx="0" cy="0" r="1" fill="var(--color-text-secondary)" opacity="0.3" />
-                <circle cx="100" cy="0" r="1" fill="var(--color-text-secondary)" opacity="0.3" />
-                <circle cx="0" cy="100" r="1" fill="var(--color-text-secondary)" opacity="0.25" />
-                <circle cx="100" cy="100" r="1" fill="var(--color-text-secondary)" opacity="0.25" />
-                {/* Red accent marks at intersections */}
-                <rect x="48" y="0" width="4" height="0.5" fill="var(--color-gedeon-red)" opacity="0.15" />
-                <rect x="0" y="48" width="0.5" height="4" fill="var(--color-gedeon-red)" opacity="0.15" />
+              <pattern id="field-mesh" width="120" height="120" patternUnits="userSpaceOnUse">
+                <path
+                  d="M0,120 L120,0"
+                  stroke="var(--color-text-secondary)"
+                  strokeWidth="0.35"
+                  opacity="0.2"
+                  style={{ animation: "line-breathe 10s ease-in-out infinite" }}
+                />
+                <path
+                  d="M0,0 L120,120"
+                  stroke="var(--color-text-muted)"
+                  strokeWidth="0.25"
+                  opacity="0.08"
+                />
+                <path
+                  d="M60,0 V120"
+                  stroke="var(--color-text-muted)"
+                  strokeWidth="0.25"
+                  opacity="0.08"
+                />
+                <path
+                  d="M0,60 H120"
+                  stroke="var(--color-text-muted)"
+                  strokeWidth="0.25"
+                  opacity="0.08"
+                />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="1.5"
+                  fill="var(--color-gedeon-red)"
+                  style={{ animation: "node-pulse 4.5s ease-in-out infinite" }}
+                />
               </pattern>
-              {/* Radial fade to contain the mesh */}
-              <radialGradient id="mesh-fade" cx="55%" cy="45%" r="65%">
+              <radialGradient id="mesh-fade" cx="62%" cy="46%" r="68%">
                 <stop offset="0%" stopColor="var(--color-background)" stopOpacity="0" />
-                <stop offset="70%" stopColor="var(--color-background)" stopOpacity="0.4" />
+                <stop offset="76%" stopColor="var(--color-background)" stopOpacity="0.4" />
                 <stop offset="100%" stopColor="var(--color-background)" stopOpacity="1" />
               </radialGradient>
             </defs>
-            <rect width="100%" height="100%" fill="url(#field-mesh)" opacity="0.5" />
+            <rect width="100%" height="100%" fill="url(#field-mesh)" opacity="0.44" />
             <rect width="100%" height="100%" fill="url(#mesh-fade)" />
           </svg>
         </div>
 
-        {/* ── Layer 2: Red Energy Glow ── */}
-        <div
-          className="absolute pointer-events-none z-[1]"
-          style={{
-            width: '700px',
-            height: '700px',
-            right: '5%',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            background: 'radial-gradient(circle, var(--gedeon-red) 0%, transparent 70%)',
-            animation: 'glow-breathe 6s ease-in-out infinite',
-            filter: 'blur(80px)',
-          }}
-        />
+        <div className="hero-circuit-haze absolute -right-10 top-1/2 z-[1] h-[620px] w-[620px] -translate-y-1/2 rounded-full" />
+        <div className="hero-circuit-haze absolute left-[-16%] top-[14%] z-[1] h-[420px] w-[420px] rounded-full opacity-50" />
 
-        {/* ── Content Grid ── */}
-        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 lg:px-16 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-16">
-
-          {/* Left: Editorial Text Block */}
-          <div className="w-full md:w-[58%] flex flex-col items-start">
-            {/* Microtexto operativo */}
-            <div className="flex items-center gap-3 mb-12">
-              <span className="w-8 h-[1px] bg-gedeon-red" />
-              <span className="text-[10px] font-bold tracking-[0.35em] text-text-muted uppercase" style={{ animation: 'flicker-red 8s ease-in-out infinite' }}>
-                Protocolo Gedeon // Preparando La Arena
+        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-12 px-6 md:px-12 lg:flex-row lg:gap-16 lg:px-16">
+          <div className="flex w-full flex-col items-start lg:w-[54%]">
+            <div className="mb-10 flex items-center gap-3">
+              <span className="h-[1px] w-8 bg-gedeon-red" />
+              <span
+                className="text-[10px] font-bold uppercase tracking-[0.35em] text-text-muted"
+                style={{ animation: "flicker-red 8s ease-in-out infinite" }}
+              >
+                Protocolo Gedeon // Sistema de activacion
               </span>
             </div>
 
-            {/* Headline monumental */}
-            <h1 className="text-[3.8rem] sm:text-[5.5rem] lg:text-[8rem] xl:text-[9.5rem] font-black uppercase tracking-[-0.04em] leading-[0.82] text-foreground mb-10 ml-[-3px]">
-              El<br />
-              Regreso<br />
-              <span className="text-gedeon-red">Táctico.</span>
+            <h1 className="ml-[-3px] mb-8 text-[3.9rem] font-black uppercase leading-[0.82] tracking-[-0.045em] text-foreground sm:text-[5.6rem] lg:text-[8rem] xl:text-[9.5rem]">
+              El
+              <br />
+              Regreso
+              <br />
+              <span className="text-gedeon-red">Tactico.</span>
             </h1>
 
-            {/* Subtítulo */}
-            <div className="relative pl-5 mb-16 max-w-lg">
-              <div className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-gedeon-red via-gedeon-red/40 to-transparent" />
-              <p className="text-lg md:text-xl text-text-secondary font-light leading-relaxed tracking-wide">
-                Forjando leyendas. La comunidad que resistió vuelve convertida en un batallón implacable. Honor, disciplina y victoria.
+            <div className="relative mb-14 max-w-xl pl-5">
+              <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-gedeon-red via-gedeon-red/40 to-transparent" />
+              <p className="text-lg font-light leading-relaxed tracking-[0.02em] text-text-secondary md:text-xl">
+                Una marca que vuelve con disciplina, geometria y sistema activo.
+                El nucleo se mantiene firme; la red alrededor despierta con
+                precision.
               </p>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-5">
-              <a href="#interes" className="group relative px-10 py-5 bg-foreground text-background font-bold tracking-[0.2em] text-[11px] uppercase overflow-hidden cursor-pointer inline-block no-underline">
+            <div className="mb-12 flex flex-col gap-5 sm:flex-row">
+              <a
+                href="#interes"
+                className="group relative inline-block cursor-pointer overflow-hidden bg-foreground px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-background no-underline"
+              >
                 <span className="relative z-10 flex items-center gap-3">
-                  Alinearse al Sistema
-                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  Alinearse al sistema
+                  <svg
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="square"
+                      strokeLinejoin="miter"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
                   </svg>
                 </span>
-                <div className="absolute inset-0 bg-gedeon-red origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0" />
+                <div className="absolute inset-0 z-0 origin-left scale-x-0 bg-gedeon-red transition-transform duration-500 ease-out group-hover:scale-x-100" />
               </a>
-              <button className="px-10 py-5 bg-transparent border border-gedeon-border text-foreground font-bold tracking-[0.2em] text-[11px] uppercase hover:border-text-secondary/40 hover:bg-white/[0.02] transition-all duration-300 cursor-pointer">
-                Nuestro Legado
+              <button className="cursor-pointer border border-gedeon-border bg-transparent px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:border-text-secondary/40 hover:bg-white/[0.02]">
+                Nuestro legado
               </button>
             </div>
-          </div>
 
-          {/* Right: Shield + Orbital System */}
-          <div className="hidden md:flex w-[42%] justify-center items-center relative">
-            <div className="relative w-[420px] h-[420px] lg:w-[480px] lg:h-[480px] flex items-center justify-center">
-
-              {/* Orbital Ring 1 — Outermost (slow, dashed) */}
-              <svg
-                className="absolute inset-0 w-full h-full"
-                viewBox="0 0 500 500"
-                style={{ animation: 'orbit-slow 90s linear infinite' }}
-              >
-                <circle cx="250" cy="250" r="245" fill="none" stroke="var(--color-text-muted)" strokeWidth="0.5" strokeDasharray="3 18" opacity="0.25" />
-                {/* Orbital node markers */}
-                <circle cx="250" cy="5" r="2" fill="var(--color-gedeon-red)" style={{ animation: 'node-pulse 5s ease-in-out infinite' }} />
-                <circle cx="495" cy="250" r="1.5" fill="var(--color-text-secondary)" opacity="0.5" />
-                <circle cx="250" cy="495" r="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
-              </svg>
-
-              {/* Orbital Ring 2 — Mid (counter-rotating, partial arc) */}
-              <svg
-                className="absolute inset-[30px] w-[calc(100%-60px)] h-[calc(100%-60px)]"
-                viewBox="0 0 500 500"
-                style={{ animation: 'orbit-reverse 70s linear infinite' }}
-              >
-                <circle cx="250" cy="250" r="240" fill="none" stroke="var(--color-gedeon-red)" strokeWidth="0.8" strokeDasharray="300 200" opacity="0.4" />
-                <circle cx="250" cy="250" r="240" fill="none" stroke="var(--color-text-secondary)" strokeWidth="0.3" strokeDasharray="2 28" opacity="0.2" />
-                {/* Orbital node */}
-                <circle cx="10" cy="250" r="2.5" fill="var(--color-gedeon-red)" style={{ animation: 'flicker-red 6s ease-in-out infinite' }} />
-              </svg>
-
-              {/* Orbital Ring 3 — Inner halo */}
-              <svg
-                className="absolute inset-[60px] w-[calc(100%-120px)] h-[calc(100%-120px)]"
-                viewBox="0 0 500 500"
-                style={{ animation: 'orbit-slow 50s linear infinite' }}
-              >
-                <circle cx="250" cy="250" r="230" fill="none" stroke="var(--color-text-secondary)" strokeWidth="0.4" strokeDasharray="8 40" opacity="0.15" />
-              </svg>
-
-              {/* ── The Shield: Core Emblem ── */}
-              <svg
-                className="relative z-10"
-                width="160" height="180"
-                viewBox="0 0 120 140"
-                fill="none"
-                style={{ filter: 'drop-shadow(0 0 40px rgba(139,17,17,0.35))' }}
-              >
-                {/* Shield outline */}
-                <path
-                  d="M60 6 L12 28 V62 C12 98 36 125 60 134 C84 125 108 98 108 62 V28 L60 6 Z"
-                  stroke="var(--color-gedeon-red)"
-                  strokeWidth="2"
-                  strokeLinejoin="miter"
-                  fill="none"
-                />
-                {/* Inner shield echo */}
-                <path
-                  d="M60 18 L24 36 V64 C24 92 42 114 60 122 C78 114 96 92 96 64 V36 L60 18 Z"
-                  stroke="var(--color-text-secondary)"
-                  strokeWidth="0.5"
-                  strokeLinejoin="miter"
-                  fill="none"
-                  opacity="0.2"
-                />
-                {/* Vertical axis — dashed */}
-                <line x1="60" y1="6" x2="60" y2="134" stroke="var(--color-text-secondary)" strokeWidth="0.8" strokeDasharray="3 5" opacity="0.3" />
-                {/* Horizontal crossbar */}
-                <line x1="12" y1="28" x2="108" y2="28" stroke="var(--color-text-secondary)" strokeWidth="0.5" opacity="0.15" />
-                <line x1="20" y1="42" x2="100" y2="42" stroke="var(--color-gedeon-red)" strokeWidth="0.5" opacity="0.25" />
-                {/* Core nucleus */}
-                <rect x="54" y="58" width="12" height="12" fill="var(--color-gedeon-red)" opacity="0.8" />
-                <rect x="56" y="60" width="8" height="8" fill="var(--color-background)" opacity="0.6" />
-                {/* Lower marks */}
-                <line x1="40" y1="80" x2="80" y2="80" stroke="var(--color-text-muted)" strokeWidth="0.5" opacity="0.15" />
-                <circle cx="60" cy="100" r="1.5" fill="var(--color-gedeon-red)" style={{ animation: 'node-pulse 3s ease-in-out infinite' }} />
-              </svg>
-
-            </div>
-          </div>
-
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-6 md:left-12 flex flex-col items-center gap-3 opacity-40">
-          <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-text-muted rotate-90 origin-left translate-y-8">Scroll</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-gedeon-red to-transparent" />
-        </div>
-
-      </section>
-
-      {/* Manifiesto Editorial - High Contrast Block */}
-      <section id="manifiesto" className="relative py-40 bg-zinc-950 px-6 md:px-12 border-b border-white/5">
-        <div className="absolute inset-0 pointer-events-none opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(var(--color-foreground) 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
-        <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-20">
-          
-          <div className="flex flex-col">
-            <span className="text-[12px] text-gedeon-red font-bold tracking-[0.3em] uppercase mb-6">Bloque 01</span>
-            <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter leading-none text-foreground border-l-4 border-gedeon-red pl-6">
-              El Escudo<br/>Intacto.
-            </h2>
-          </div>
-          
-          <div className="flex flex-col gap-10 lg:pl-10 2xl:pl-32 border-t border-gedeon-border md:border-t-0 md:border-l md:border-gedeon-border pt-10 md:pt-0">
-            <div className="text-2xl md:text-4xl text-text-secondary font-light leading-snug tracking-tight">
-              "No seguimos tendencias, marcamos el estándar. Gedeon Esport no nace de la casualidad, surge de la voluntad inquebrantable de dominar el terreno con pura táctica."
-            </div>
-            
-            <div className="flex flex-col gap-6 text-base tracking-wide leading-relaxed text-text-muted max-w-2xl">
-              <p>
-                Nuestra armadura moderna es nuestro juego de equipo. Nuestra lanza, la precisión en cada jugada. La comunidad que formamos no es un adorno visual, es una verdadera fuerza colectiva.
-              </p>
-              <p>
-                El silencio antes de la batalla es donde se forjan los campeones.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-text-secondary/10">
-              {[ { l: 'DISCIPLINA', v: '100%' }, { l: 'ESTADO', v: 'ACTIVO' }, { l: 'VISIÓN', v: 'GLOBAL' }, { l: 'HONOR', v: 'MÁXIMO' } ].map((stat, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                  <span className="text-[10px] text-gedeon-red font-bold tracking-[0.2em]">{stat.l}</span>
-                  <span className="text-3xl font-light uppercase tracking-tighter text-foreground">{stat.v}</span>
+            <div className="grid w-full max-w-[720px] gap-4 border-t border-white/8 pt-8 sm:grid-cols-3">
+              {[
+                {
+                  label: "Firma",
+                  value: "Insignia sentinela",
+                },
+                {
+                  label: "Pulso",
+                  value: "Circuitos en expansion lenta",
+                },
+                {
+                  label: "Orbita",
+                  value: "Campo activo y estable",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="border-l border-white/10 pl-4 first:border-l-0 first:pl-0"
+                >
+                  <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-gedeon-red">
+                    {item.label}
+                  </p>
+                  <p className="text-sm leading-relaxed text-text-secondary">
+                    {item.value}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-          
+
+          <div className="flex w-full justify-center lg:w-[46%]">
+            <div className="relative flex h-[420px] w-[420px] items-center justify-center sm:h-[480px] sm:w-[480px] lg:h-[560px] lg:w-[560px]">
+              <svg
+                className="absolute inset-0 h-full w-full"
+                viewBox="0 0 560 560"
+                style={{ animation: "orbit-slow 96s linear infinite" }}
+              >
+                <circle
+                  cx="280"
+                  cy="280"
+                  r="258"
+                  fill="none"
+                  stroke="var(--color-text-muted)"
+                  strokeWidth="0.9"
+                  strokeDasharray="4 22"
+                  opacity="0.24"
+                />
+                <circle
+                  cx="280"
+                  cy="24"
+                  r="3.5"
+                  fill="var(--color-gedeon-red)"
+                  style={{ animation: "node-pulse 5s ease-in-out infinite" }}
+                />
+                <circle cx="536" cy="280" r="2.5" fill="var(--color-text-secondary)" opacity="0.5" />
+                <circle cx="280" cy="536" r="2.5" fill="var(--color-text-secondary)" opacity="0.3" />
+              </svg>
+
+              <svg
+                className="absolute inset-[28px] h-[calc(100%-56px)] w-[calc(100%-56px)]"
+                viewBox="0 0 560 560"
+                style={{ animation: "orbit-reverse 78s linear infinite" }}
+              >
+                <circle
+                  cx="280"
+                  cy="280"
+                  r="240"
+                  fill="none"
+                  stroke="var(--color-gedeon-red)"
+                  strokeWidth="1.4"
+                  strokeDasharray="320 180"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="280"
+                  cy="280"
+                  r="232"
+                  fill="none"
+                  stroke="var(--color-text-secondary)"
+                  strokeWidth="0.8"
+                  strokeDasharray="3 20"
+                  opacity="0.18"
+                />
+                <path
+                  d="M68 280C68 162 162 68 280 68"
+                  stroke="var(--color-gedeon-red)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  opacity="0.45"
+                />
+                <circle
+                  cx="60"
+                  cy="280"
+                  r="4"
+                  fill="var(--color-gedeon-red)"
+                  style={{ animation: "flicker-red 6s ease-in-out infinite" }}
+                />
+              </svg>
+
+              <svg
+                className="absolute inset-[74px] h-[calc(100%-148px)] w-[calc(100%-148px)]"
+                viewBox="0 0 560 560"
+                style={{ animation: "orbit-slow 54s linear infinite" }}
+              >
+                <circle
+                  cx="280"
+                  cy="280"
+                  r="200"
+                  fill="none"
+                  stroke="var(--color-text-secondary)"
+                  strokeWidth="0.7"
+                  strokeDasharray="10 34"
+                  opacity="0.14"
+                />
+              </svg>
+
+              <div className="hero-core-glow absolute inset-[110px] rounded-full" />
+
+              <div className="relative z-10 h-[300px] w-[300px] sm:h-[360px] sm:w-[360px] lg:h-[430px] lg:w-[430px]">
+                <GedeonMark
+                  showCircuitField
+                  className="h-full w-full drop-shadow-[0_0_28px_rgba(139,17,17,0.18)]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-12 left-6 flex flex-col items-center gap-3 opacity-40 md:left-12">
+          <span className="origin-left translate-y-8 rotate-90 text-[9px] font-bold uppercase tracking-[0.2em] text-text-muted">
+            Scroll
+          </span>
+          <div className="h-20 w-[1px] bg-gradient-to-b from-gedeon-red to-transparent" />
         </div>
       </section>
 
-      {/* Valores Tácticos - Brutalist Cards */}
-      <section id="tactica" className="py-40 bg-gedeon-surface px-6 md:px-12 relative overflow-hidden">
-        {/* Giant background numbers */}
-        <div className="absolute -right-20 top-0 text-[30rem] font-black text-background/50 leading-none select-none z-0">0X</div>
-        
-        <div className="max-w-[1400px] mx-auto w-full relative z-10">
-          <div className="flex items-end justify-between mb-24 border-b border-text-muted/20 pb-8">
-            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">Código Táctico</h2>
-            <span className="text-sm font-bold tracking-[0.3em] text-gedeon-red uppercase hidden md:block">Metodología Gedeon</span>
+      <section
+        id="manifiesto"
+        className="relative border-b border-white/5 bg-zinc-950 px-6 py-40 md:px-12"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: "radial-gradient(var(--color-foreground) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-20 md:grid-cols-[1fr_2fr]">
+          <div className="flex flex-col">
+            <span className="mb-6 text-[12px] font-bold uppercase tracking-[0.3em] text-gedeon-red">
+              Bloque 01
+            </span>
+            <h2 className="border-l-4 border-gedeon-red pl-6 text-5xl font-black uppercase leading-none tracking-tighter text-foreground md:text-6xl">
+              El escudo
+              <br />
+              intacto.
+            </h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-text-muted/10 bg-background/50 backdrop-blur-sm">
-            {[
-              { id: '01', title: 'Fuerza Contenida', desc: 'No derrochamos energía. Cada movimiento es intencional, cada ofensiva está calculada. Atacamos con precisión cuando la victoria es absoluta.' },
-              { id: '02', title: 'Mentalidad de Acero', desc: 'La derrota es simplemente data; la victoria es la consecuencia lógica de nuestra preparación. Inquebrantables bajo cualquier presión.' },
-              { id: '03', title: 'Unidad Total', desc: 'El individuo es letal, pero el batallón es invencible. Sincronización táctica donde cada agente protege al colectivo.' }
-            ].map((item, i) => (
-              <div key={i} className={`p-12 2xl:p-16 flex flex-col group relative ${i !== 0 ? 'border-t md:border-t-0 md:border-l border-text-muted/10' : ''}`}>
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gedeon-red scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                
-                <span className="text-gedeon-red text-xl font-mono block mb-12 opacity-50 group-hover:opacity-100 transition-opacity">{item.id}</span>
-                <h3 className="text-3xl font-bold uppercase tracking-tight mb-6 leading-tight pb-6 border-b border-text-muted/20">{item.title}</h3>
-                <p className="text-text-secondary font-light text-base leading-relaxed mt-auto">
+
+          <div className="flex flex-col gap-10 border-t border-gedeon-border pt-10 md:border-l md:border-t-0 md:pt-0 lg:pl-10 2xl:pl-32">
+            <div className="text-2xl font-light leading-snug tracking-tight text-text-secondary md:text-4xl">
+              &quot;No seguimos tendencias, marcamos el estandar. Gedeon Esport
+              no nace de la casualidad, surge de la voluntad inquebrantable de
+              dominar el terreno con pura tactica.&quot;
+            </div>
+
+            <div className="flex max-w-2xl flex-col gap-6 text-base leading-relaxed tracking-wide text-text-muted">
+              <p>
+                Nuestra armadura moderna es nuestro juego de equipo. Nuestra
+                lanza, la precision en cada jugada. La comunidad que formamos no
+                es un adorno visual, es una verdadera fuerza colectiva.
+              </p>
+              <p>El silencio antes de la batalla es donde se forjan los campeones.</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 border-t border-text-secondary/10 pt-8 md:grid-cols-4">
+              {tacticalStats.map((stat) => (
+                <div key={stat.label} className="flex flex-col gap-2">
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-gedeon-red">
+                    {stat.label}
+                  </span>
+                  <span className="text-3xl font-light uppercase tracking-tighter text-foreground">
+                    {stat.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="tactica"
+        className="relative overflow-hidden bg-gedeon-surface px-6 py-40 md:px-12"
+      >
+        <div className="pointer-events-none absolute -right-20 top-0 select-none text-[30rem] font-black leading-none text-background/50">
+          0X
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-[1400px]">
+          <div className="mb-24 flex items-end justify-between border-b border-text-muted/20 pb-8">
+            <h2 className="text-4xl font-black uppercase leading-none tracking-tighter md:text-7xl">
+              Codigo tactico
+            </h2>
+            <span className="hidden text-sm font-bold uppercase tracking-[0.3em] text-gedeon-red md:block">
+              Metodologia Gedeon
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 gap-0 border border-text-muted/10 bg-background/50 backdrop-blur-sm md:grid-cols-3">
+            {tacticalValues.map((item, index) => (
+              <div
+                key={item.id}
+                className={`group relative flex flex-col p-12 2xl:p-16 ${
+                  index !== 0 ? "border-t border-text-muted/10 md:border-l md:border-t-0" : ""
+                }`}
+              >
+                <div className="absolute left-0 top-0 h-[2px] w-full origin-left scale-x-0 bg-gedeon-red transition-transform duration-500 group-hover:scale-x-100" />
+
+                <span className="mb-12 block font-mono text-xl text-gedeon-red opacity-50 transition-opacity group-hover:opacity-100">
+                  {item.id}
+                </span>
+                <h3 className="mb-6 border-b border-text-muted/20 pb-6 text-3xl font-bold uppercase leading-tight tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="mt-auto text-base font-light leading-relaxed text-text-secondary">
                   {item.desc}
                 </p>
               </div>
@@ -283,109 +444,198 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════
-           INTEREST FORM — Alineamiento Táctico
-         ═══════════════════════════════════════════════════════════ */}
-      <section id="interes" className="relative py-32 md:py-40 bg-background px-6 md:px-12 border-b border-gedeon-border overflow-hidden">
-        {/* Subtle dot grid background */}
+      <section
+        id="interes"
+        className="relative overflow-hidden border-b border-gedeon-border bg-background px-6 py-32 md:px-12 md:py-40"
+      >
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          className="pointer-events-none absolute inset-0 opacity-[0.035]"
           style={{
-            backgroundImage:
-              "radial-gradient(var(--foreground) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(var(--foreground) 1px, transparent 1px)",
             backgroundSize: "20px 20px",
           }}
         />
+        <div className="interest-ambient-glow absolute left-[-12%] top-[12%] h-[520px] w-[520px] rounded-full" />
+        <div className="interest-ambient-glow absolute bottom-[-28%] right-[-10%] h-[540px] w-[540px] rounded-full opacity-60" />
 
-        {/* Red glow accent */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            width: "500px",
-            height: "500px",
-            left: "-10%",
-            top: "20%",
-            background:
-              "radial-gradient(circle, var(--gedeon-red) 0%, transparent 70%)",
-            filter: "blur(100px)",
-            opacity: 0.08,
-          }}
-        />
-
-        <div className="max-w-[1400px] mx-auto w-full relative z-10">
-          {/* Section Header */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 md:gap-20 mb-20">
+        <div className="relative z-10 mx-auto w-full max-w-[1400px]">
+          <div className="mb-16 grid grid-cols-1 gap-16 md:mb-20 md:grid-cols-[1fr_2fr] md:gap-20">
             <div className="flex flex-col">
-              <span className="text-[12px] text-gedeon-red font-bold tracking-[0.3em] uppercase mb-6">
+              <span className="mb-6 text-[12px] font-bold uppercase tracking-[0.3em] text-gedeon-red">
                 Bloque 03
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-foreground border-l-4 border-gedeon-red pl-6">
-                Alineamiento<br />Táctico.
+              <h2 className="border-l-4 border-gedeon-red pl-6 text-4xl font-black uppercase leading-none tracking-tighter text-foreground md:text-5xl lg:text-6xl">
+                Alineamiento
+                <br />
+                tactico.
               </h2>
             </div>
 
-            <div className="flex flex-col gap-6 lg:pl-10 2xl:pl-32 border-t border-gedeon-border md:border-t-0 md:border-l md:border-gedeon-border pt-10 md:pt-0 justify-center">
-              <p className="text-xl md:text-2xl text-text-secondary font-light leading-snug tracking-tight max-w-xl">
-                Registra tu interés y sé el primero en recibir acceso cuando el protocolo se active. Sin compromisos, sin spam.
+            <div className="flex flex-col justify-center gap-6 border-t border-gedeon-border pt-10 md:border-l md:border-t-0 md:pt-0 lg:pl-10 2xl:pl-32">
+              <p className="max-w-2xl text-xl font-light leading-snug tracking-tight text-text-secondary md:text-2xl">
+                El hero ya abre el sistema. Esta seccion lo convierte en una
+                entrada formal: panel de reclutamiento, lectura clara y misma
+                energia contenida.
               </p>
-              <div className="flex items-center gap-3 mt-2">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-gedeon-red opacity-70">
-                  <path d="M12 2L3 6v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square"/>
-                </svg>
-                <span className="text-[10px] font-bold tracking-[0.25em] text-text-muted uppercase">
-                  Tus datos están protegidos por el escudo
+              <div className="flex items-center gap-3">
+                <span className="h-[1px] w-10 bg-gedeon-red" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-text-muted">
+                  Reclutamiento inicial // canal protegido
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Form Container */}
-          <div className="relative p-8 md:p-12 lg:p-16 border border-gedeon-border bg-gedeon-surface/30 backdrop-blur-sm">
-            {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gedeon-red" />
-            <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gedeon-red" />
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gedeon-red" />
-            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gedeon-red" />
+          <div className="grid items-start gap-8 xl:grid-cols-[0.9fr_1.1fr]">
+            <aside className="recruitment-dossier relative overflow-hidden border border-white/10 px-6 py-7 sm:px-8 sm:py-9">
+              <div className="recruitment-panel-grid absolute inset-0 opacity-40" />
+              <div className="relative z-10">
+                <div className="mb-8 flex items-center justify-between gap-6 border-b border-white/8 pb-6">
+                  <div>
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.28em] text-gedeon-red">
+                      Dossier 03 // Interest intake
+                    </p>
+                    <h3 className="text-2xl font-black uppercase leading-none tracking-tight text-foreground sm:text-3xl">
+                      Panel de reclutamiento premium.
+                    </h3>
+                  </div>
+                  <div className="flex h-20 w-20 items-center justify-center rounded-[24px] border border-white/10 bg-white/[0.02] p-2 shadow-[0_0_40px_rgba(139,17,17,0.14)]">
+                    <GedeonMark className="h-full w-full" />
+                  </div>
+                </div>
 
-            <InterestForm />
+                <p className="max-w-xl text-base leading-relaxed text-text-secondary">
+                  Cada dato entra como una senal. No pedimos mas de lo
+                  necesario: identidad operativa, canal de contacto,
+                  disponibilidad y una nota breve para entender afinidad y
+                  contexto competitivo.
+                </p>
+
+                <div className="mt-8 grid gap-4">
+                  {recruitmentSignals.map((signal, index) => (
+                    <div
+                      key={signal.code}
+                      className="rounded-[22px] border border-white/10 bg-white/[0.02] px-4 py-4 backdrop-blur-sm"
+                    >
+                      <div className="mb-2 flex items-center gap-3">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full border border-gedeon-red/30 bg-gedeon-red/10 text-[10px] font-bold tracking-[0.18em] text-gedeon-red">
+                          0{index + 1}
+                        </span>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-foreground">
+                          {signal.code}
+                        </p>
+                      </div>
+                      <p className="text-sm leading-relaxed text-text-muted">
+                        {signal.detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/8 pt-6">
+                  <div>
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-gedeon-red">
+                      Estado
+                    </p>
+                    <p className="text-sm leading-relaxed text-text-secondary">
+                      Registro inicial de comunidad.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-gedeon-red">
+                      Criterio
+                    </p>
+                    <p className="text-sm leading-relaxed text-text-secondary">
+                      Claridad, disciplina y minimo ruido visual.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div className="recruitment-shell relative overflow-hidden border border-white/10 bg-gedeon-surface/55">
+              <div className="recruitment-panel-grid absolute inset-0 opacity-45" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gedeon-red/70 to-transparent" />
+              <div className="absolute left-0 top-8 h-24 w-px bg-gradient-to-b from-gedeon-red/80 to-transparent" />
+              <div className="absolute right-0 top-8 h-24 w-px bg-gradient-to-b from-gedeon-red/80 to-transparent" />
+
+              <div className="relative z-10 p-6 sm:p-8 md:p-10 lg:p-12">
+                <div className="mb-8 flex flex-col gap-5 border-b border-white/8 pb-6 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.28em] text-gedeon-red">
+                      Intake channel // live
+                    </p>
+                    <h3 className="text-2xl font-black uppercase leading-none tracking-tight text-foreground md:text-3xl">
+                      Acceso de interes.
+                    </h3>
+                  </div>
+                  <div className="grid gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-text-muted sm:grid-cols-2">
+                    <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-center">
+                      Validacion activa
+                    </span>
+                    <span className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-center">
+                      Respuesta prioritaria
+                    </span>
+                  </div>
+                </div>
+
+                <InterestForm />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Ceremonial Closing / Final CTA */}
-      <section id="cta" className="py-48 bg-background relative px-6 md:px-12 flex flex-col items-center text-center justify-center border-t-8 border-gedeon-red">
-        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--color-gedeon-red)_0%,transparent_40%)] opacity-5 pointer-events-none" />
-        
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" className="text-gedeon-red mb-10 opacity-80">
-          <path d="M12 2L3 6v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z" stroke="currentColor" strokeWidth="1" strokeLinecap="square"/>
+      <section
+        id="cta"
+        className="relative flex flex-col items-center justify-center border-t-8 border-gedeon-red bg-background px-6 py-48 text-center md:px-12"
+      >
+        <div className="pointer-events-none absolute inset-0 h-full w-full bg-[radial-gradient(circle_at_center,var(--color-gedeon-red)_0%,transparent_40%)] opacity-5" />
+
+        <svg
+          width="60"
+          height="60"
+          viewBox="0 0 24 24"
+          fill="none"
+          className="mb-10 text-gedeon-red opacity-80"
+        >
+          <path
+            d="M12 2L3 6v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"
+            stroke="currentColor"
+            strokeWidth="1"
+            strokeLinecap="square"
+          />
         </svg>
-        
-        <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8 max-w-4xl leading-[0.9]">
-          La arena se abre <span className="text-transparent border-text-stroke text-background font-outline">una vez más.</span>
+
+        <h2 className="mb-8 max-w-4xl text-4xl font-black leading-[0.9] tracking-tighter md:text-7xl">
+          La arena se abre{" "}
+          <span className="font-outline text-background">
+            una vez mas.
+          </span>
         </h2>
 
-        
-        <p className="text-text-muted text-xl max-w-2xl font-light mb-16 tracking-wide">
-          No buscamos jugadores, reclutamos tácticos. Únete hoy a la élite.
+        <p className="mb-16 max-w-2xl text-xl font-light tracking-wide text-text-muted">
+          No buscamos jugadores, reclutamos tacticos. Unete hoy a la elite.
         </p>
-        
-        <a href="#interes" className="inline-flex items-center justify-center px-16 py-6 bg-gedeon-red text-white font-bold tracking-[0.3em] uppercase transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 no-underline">
-          Ingresar al Batallón
+
+        <a
+          href="#interes"
+          className="inline-flex items-center justify-center bg-gedeon-red px-16 py-6 font-bold uppercase tracking-[0.3em] text-white no-underline transition-all duration-300 hover:scale-105 hover:bg-white hover:text-black"
+        >
+          Ingresar al batallon
         </a>
       </section>
 
-      {/* Footer Minimalista Brutalista */}
-      <footer className="bg-zinc-950 py-12 px-6 md:px-12 border-t border-text-muted/10">
-        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="font-bold tracking-[0.3em] uppercase text-xl text-foreground">
+      <footer className="border-t border-text-muted/10 bg-zinc-950 px-6 py-12 md:px-12">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-6 md:flex-row">
+          <div className="text-xl font-bold uppercase tracking-[0.3em] text-foreground">
             GEDEON <span className="text-gedeon-red">ESPORT</span>
           </div>
-          <div className="text-[10px] font-bold tracking-[0.2em] text-text-muted uppercase">
-            &copy; {new Date().getFullYear()} / Protocolo Activo / Legado en Construcción
+          <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted">
+            &copy; {new Date().getFullYear()} / Protocolo activo / Legado en construccion
           </div>
         </div>
       </footer>
-
     </main>
   );
 }

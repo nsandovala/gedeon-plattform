@@ -51,9 +51,10 @@ La dirección visual y conceptual actual de Gedeon Esport se define como:
 - schemas Pydantic con alias para compatibilidad con Zod
 - scripts/create_tables.py para inicialización
 - docker-compose.yml con PostgreSQL 17
-- **pendiente**: confirmar persistencia real en DB
-- **error actual**: `ConnectionDoesNotExistError` al hacer flush/insert
-  → ver docs/agents/HANDOFF-2026-04-13.md
+- `pool_pre_ping=True` y `pool_recycle=300` agregados a db.py
+- **bug activo**: `GET /api/interest` devuelve 500 (ConnectionDoesNotExistError)
+- **handoff actual**: `docs/agents/HANDOFF-INTEREST-BACKEND-2026-04-21.md`
+- **NOTA**: El 422 en POST por JSON inválido NO es un bug estructural
 
 ### Discord bot (apps/discord-bot)
 - scaffold con src/, commands/, events/, lib/

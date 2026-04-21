@@ -28,7 +28,12 @@
 
 ### Blocked
 - [x] Docker en Windows — Desktop no estaba corriendo (handoff para Mac)
-- [ ] db.py — ConnectionDoesNotExistError al hacer flush/insert
+
+### Active Bug (2026-04-21)
+- [ ] `GET /api/interest` — 500 Internal Server Error
+  - Traceback: `asyncpg.exceptions.ConnectionDoesNotExistError: connection was closed in the middle of operation`
+  - Handoff: `docs/agents/HANDOFF-INTEREST-BACKEND-2026-04-21.md`
+  - Hipótesis: pool de conexiones asyncpg, lifecycle de sesión, reconexión fallida
 
 ## Phase 2 — Interest Capture (Not started)
 - [ ] Admin dashboard (read-only table)

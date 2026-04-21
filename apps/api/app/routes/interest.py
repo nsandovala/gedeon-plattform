@@ -53,6 +53,19 @@ async def list_interest(
     items = result.scalars().all()
 
     return InterestList(
-        items=[InterestOutput.model_validate(r) for r in items],
+        items=[
+            InterestOutput(
+                id=r.id,
+                name=r.name,
+                discord_handle=r.discord_handle,
+                email=r.email,
+                preferred_mode=r.preferred_mode,
+                availability=r.availability,
+                message=r.message,
+                source=r.source,
+                created_at=r.created_at,
+            )
+            for r in items
+        ],
         total=total,
     )

@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0B0B0C;
-  --foreground: #F3F4F6;
-  --gedeon-red: #8B1111;
-  --gedeon-red-hover: #A61B1B;
-  --gedeon-surface: #15171A;
+  --background: #0b0b0c;
+  --foreground: #f3f4f6;
+  --gedeon-red: #8b1111;
+  --gedeon-red-hover: #a61b1b;
+  --gedeon-surface: #15171a;
   --gedeon-border: #202327;
-  --text-muted: #8D939C;
-  --text-secondary: #C7CBD1;
+  --text-muted: #8d939c;
+  --text-secondary: #c7cbd1;
 }
 
 @theme inline {
@@ -20,118 +20,304 @@
   --color-gedeon-border: var(--gedeon-border);
   --color-text-muted: var(--text-muted);
   --color-text-secondary: var(--text-secondary);
-  --font-sans: var(--font-geist-sans), var(--font-inter), sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-outfit), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glassmorphism utility */
-@utility glass {
-  background: var(--gedeon-surface);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--gedeon-border);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* ── Hero V4: Orbital Shield System ── */
-
 @keyframes orbit-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes orbit-reverse {
-  from { transform: rotate(360deg); }
-  to   { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
+
 @keyframes glow-breathe {
-  0%, 100% { opacity: 0.12; }
-  50%      { opacity: 0.25; }
+  0%,
+  100% {
+    opacity: 0.14;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.28;
+    transform: scale(1.04);
+  }
 }
-@keyframes node-pulse {
-  0%, 100% { r: 1.5; opacity: 0.4; }
-  50%      { r: 2.5; opacity: 0.9; }
-}
-@keyframes flicker-red {
-  0%, 90%, 100% { opacity: 0.5; }
-  92%           { opacity: 0.9; }
-  94%           { opacity: 0.3; }
-  96%           { opacity: 0.7; }
-}
+
 @keyframes line-breathe {
-  0%, 100% { opacity: 0.15; }
-  50%      { opacity: 0.35; }
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+
+  50% {
+    opacity: 0.34;
+  }
 }
-@keyframes text-stroke-outline {
-  0%, 100% { -webkit-text-stroke-color: var(--foreground); }
-  50%      { -webkit-text-stroke-color: var(--gedeon-red); }
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    r: 1.4;
+    opacity: 0.38;
+  }
+
+  50% {
+    r: 2.6;
+    opacity: 0.92;
+  }
+}
+
+@keyframes mark-node-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.78;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes flicker-red {
+  0%,
+  90%,
+  100% {
+    opacity: 0.52;
+  }
+
+  92% {
+    opacity: 0.9;
+  }
+
+  94% {
+    opacity: 0.36;
+  }
+
+  96% {
+    opacity: 0.72;
+  }
+}
+
+@keyframes circuit-expand {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: scale(0.985);
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: scale(1.015);
+  }
+}
+
+@keyframes mark-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes panel-sheen {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+
+  28% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
 }
 
 .font-outline {
-  -webkit-text-stroke: 1px var(--foreground);
   color: transparent;
+  -webkit-text-stroke: 1px var(--foreground);
 }
 
-/* ── Interest Form Inputs ── */
-.form-input {
+.hero-circuit-haze {
+  background: radial-gradient(
+    circle,
+    rgba(139, 17, 17, 0.16) 0%,
+    rgba(166, 27, 27, 0.06) 34%,
+    transparent 72%
+  );
+  filter: blur(96px);
+  animation: glow-breathe 11s ease-in-out infinite;
+}
+
+.hero-core-glow {
+  background: radial-gradient(
+    circle,
+    rgba(139, 17, 17, 0.14) 0%,
+    rgba(139, 17, 17, 0.04) 42%,
+    transparent 78%
+  );
+  filter: blur(68px);
+  animation: glow-breathe 10s ease-in-out infinite;
+}
+
+.interest-ambient-glow {
+  background: radial-gradient(
+    circle,
+    rgba(139, 17, 17, 0.18) 0%,
+    rgba(139, 17, 17, 0.06) 38%,
+    transparent 72%
+  );
+  filter: blur(110px);
+  animation: glow-breathe 12s ease-in-out infinite;
+}
+
+.recruitment-shell,
+.recruitment-dossier {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+    linear-gradient(180deg, rgba(21, 23, 26, 0.92), rgba(11, 11, 12, 0.88));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.recruitment-shell::after,
+.recruitment-dossier::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 38%, rgba(255, 255, 255, 0.08) 50%, transparent 62%);
+  transform: translateX(-120%);
+  animation: panel-sheen 14s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.recruitment-panel-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.8), transparent 82%);
+}
+
+.recruit-field {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.15rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0)),
+    rgba(255, 255, 255, 0.015);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.recruit-input {
   width: 100%;
-  padding: 14px 0;
-  font-size: 15px;
-  font-weight: 300;
-  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(11, 11, 12, 0.74);
   color: var(--foreground);
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--gedeon-border);
+  font: inherit;
+  font-size: 0.96rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  padding: 0.9rem 1rem;
   outline: none;
-  transition: border-color 0.3s ease, color 0.3s ease;
-  font-family: inherit;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
-.form-input::placeholder {
-  color: var(--text-muted);
-  opacity: 0.5;
+.recruit-input::placeholder {
+  color: rgba(199, 203, 209, 0.46);
 }
 
-.form-input:focus {
-  border-bottom-color: var(--gedeon-red);
+.recruit-input:focus {
+  border-color: rgba(166, 27, 27, 0.88);
+  box-shadow:
+    0 0 0 1px rgba(166, 27, 27, 0.66),
+    0 0 24px rgba(139, 17, 17, 0.16);
+  background: rgba(15, 16, 18, 0.92);
 }
 
-.form-input:disabled {
-  opacity: 0.5;
+.recruit-input:disabled {
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
-/* Select dark styling */
-select.form-input {
+.recruit-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238D939C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C7CBD1' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.95rem center;
   background-repeat: no-repeat;
-  background-position: right 4px center;
-  padding-right: 24px;
-  cursor: pointer;
+  padding-right: 2.7rem;
 }
 
-select.form-input option {
+.recruit-select option {
   background: var(--gedeon-surface);
   color: var(--foreground);
-  padding: 8px;
 }
 
-/* Textarea */
-textarea.form-input {
-  border: 1px solid var(--gedeon-border);
-  padding: 14px 16px;
-  margin-top: 4px;
+.recruit-textarea {
+  min-height: 8.4rem;
 }
 
-textarea.form-input:focus {
-  border-color: var(--gedeon-red);
+.status-glow {
+  box-shadow: 0 0 42px rgba(139, 17, 17, 0.16);
 }
 
+.mark-circuit {
+  transform-origin: 160px 160px;
+}
+
+.mark-circuit--outer {
+  animation: circuit-expand 18s ease-in-out infinite;
+}
+
+.mark-circuit--inner {
+  animation: circuit-expand 15s ease-in-out infinite reverse;
+}
+
+.mark-node {
+  transform-origin: center;
+  animation: mark-node-pulse 5.4s ease-in-out infinite;
+}
+
+.mark-core {
+  transform-origin: 160px 160px;
+  animation: mark-drift 16s ease-in-out infinite;
+}
